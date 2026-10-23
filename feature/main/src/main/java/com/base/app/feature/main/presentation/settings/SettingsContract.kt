@@ -1,0 +1,19 @@
+package com.base.app.feature.main.presentation.settings
+
+import com.base.app.core.ui.foundation.locale.AppLocale
+import com.base.app.core.ui.foundation.vm.SingleEvent
+import com.base.app.core.ui.foundation.vm.ViewIntent
+import com.base.app.core.ui.foundation.vm.ViewState
+
+data class SettingsViewState(
+    val locale: AppLocale = AppLocale.System,
+) : ViewState
+
+sealed interface SettingsIntent : ViewIntent {
+    data object BackClick : SettingsIntent
+    data class SelectLocale(val locale: AppLocale) : SettingsIntent
+}
+
+sealed interface SettingsSingleEvent : SingleEvent {
+    data object NavigateBack : SettingsSingleEvent
+}
